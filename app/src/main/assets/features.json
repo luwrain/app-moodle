@@ -1,0 +1,47 @@
+[
+    {
+        "id": 0,
+        "name": "Donate",
+        "status": 0,
+        "votestarget": 0,
+        "votescasted": 0,
+        "productid": "in.co.praveenkumar.mdroid.donate",
+        "description": "Support MDroid development and unlock special features!"
+    },
+    {
+        "id": 4,
+        "name": "Search option",
+        "status": 0,
+        "votestarget": 20,
+        "votescasted": 1,
+        "productid": "in.co.praveenkumar.mdroid.donate.features.search_option",
+        "description": "Ability to search any information on your Moodle site - Courses, Course contents, Forums, Discussions, Posts, Calender etc.,. The best part is, it works offline!"
+    },
+    {
+        "id": 5,
+        "name": "New content notifications",
+        "status": 0,
+        "votestarget": 20,
+        "votescasted": 3,
+        "productid": "in.co.praveenkumar.mdroid.donate.features.new_content_notifications",
+        "description": "Periodic checking for new contents and sending notification to user. Options will given to set the frequency of checking and more on per account basis."
+    },
+    {
+        "id": 6,
+        "name": "Uploading files",
+        "status": 0,
+        "votestarget": 30,
+        "votescasted": 0,
+        "productid": "in.co.praveenkumar.mdroid.donate.features.uploading_files",
+        "description": "User will be able to upload files to the Moodle server to their private files section. Depending on the support in Moodle APIs, this will be extended to other sections."
+    },
+    {
+        "id": 9,
+        "name": "Course participants",
+        "status": 0,
+        "votestarget": 10,
+        "votescasted": 0,
+        "productid": "in.co.praveenkumar.mdroid.donate.features.course_participants",
+        "description": "Adds a section in the course to show the list of participants in that course. Will also have options to add a participant as a contact, view profile and send messages"
+    }
+]

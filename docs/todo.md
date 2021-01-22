@@ -1,0 +1,34 @@
+Road:map or plan for the new API version of MDroid (In priority order).
+
+- [x] Normal and paranoid login
+- [x] Multiple account support
+- [x] Course listing
+- [x] Account switching from side navigation
+- [x] Course content listing
+- [x] Downloading files
+- [x] Webview for module viewing
+- [x] Course Forums listing
+- [x] Forum discussion listing
+- [x] Discussion thread listing
+- [x] Calender
+- [x] Course Calender events listing
+- [x] Contacts listing
+- [x] Donation option in side menu
+- [x] In-app purchase of app feature requests
+- [x] Sending messages
+- [x] Open source licenses
+- [x] Course favourites
+- [x] Settings implemetation
+- [x] Chat like messaging
+- [ ] Messaging server setup docs
+- [x] Background services and notifications
+- [ ] Document errors
+- [ ] Search feature
+- [x] Course participants
+- [ ] Calender events creation
+- [ ] Notes listing
+- [ ] Notes creation
+- [ ] Files listing
+- [ ] Uploading files
+- [x] Add a github web hook for docs site
+- [ ] Translation friendly code
