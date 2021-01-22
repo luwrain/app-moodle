@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.luwrain</groupId>
+  <artifactId>luwrain-app-moodle</artifactId>
+  <version>1.0.0</version>
+  <name>An accessible client for Tin Can API</name>
+  <url>http::/luwrain.org/</url>
+  <properties>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>org.luwrain</groupId>
+      <artifactId>luwrain-base</artifactId>
+      <version>2.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.luwrain</groupId>
+      <artifactId>luwrain</artifactId>
+      <version>2.0.0</version>
+    </dependency>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.0.2</version>
+        <configuration>
+          <archive>
+	    	    <manifestSections>
+              <manifestSection>
+                <name>org/luwrain</name>
+                <manifestEntries>
+                  <Extensions>org.luwrain.app.moodle.Extension</Extensions>
+                </manifestEntries>
+              </manifestSection>
+            </manifestSections>
+            <manifest>
+              <addClasspath>false</addClasspath>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
