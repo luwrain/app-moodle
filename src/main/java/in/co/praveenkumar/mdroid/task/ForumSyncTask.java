@@ -1,5 +1,6 @@
 package in.co.praveenkumar.mdroid.task;
 
+import in.co.praveenkumar.mdroid.model.*;
 import in.co.praveenkumar.mdroid.model.MDroidNotification;
 import in.co.praveenkumar.mdroid.model.MoodleCourse;
 import in.co.praveenkumar.mdroid.model.MoodleForum;
@@ -110,10 +111,10 @@ public class ForumSyncTask {
 			/*
 			 * -TODO- Improve this search with only Sql operation
 			 */
-			dbForums = MoodleForum.find(MoodleForum.class,
+			dbForums = DB.find(MoodleForum.class,
 					"forumid = ? and siteid = ?", String.valueOf(forum.getForumid()),
 					String.valueOf(siteid));
-			dbCourses = MoodleCourse.find(MoodleCourse.class,
+			dbCourses = DB.find(MoodleCourse.class,
 					"courseid = ? and siteid = ?", String.valueOf(forum.getCourseid()),
 					String.valueOf(siteid));
 			if (!dbCourses.isEmpty())

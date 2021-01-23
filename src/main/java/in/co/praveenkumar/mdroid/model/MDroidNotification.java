@@ -1,32 +1,33 @@
 package in.co.praveenkumar.mdroid.model;
 
-import com.orm.SugarRecord;
-import com.orm.dsl.Ignore;
+//import com.orm.SugarRecord;
+//import com.orm.dsl.Ignore;
 
-public class MDroidNotification extends SugarRecord<MDroidNotification> {
+public class MDroidNotification //extends SugarRecord<MDroidNotification>
+{
 
-	@Ignore
+	//@Ignore
 	public static final int TYPE_COURSE_CONTENT = 1;
 
-	@Ignore
+	//@Ignore
 	public static final int TYPE_FORUM = 2;
 
-	@Ignore
+	//@Ignore
 	public static final int TYPE_FORUM_TOPIC = 3;
 
-	@Ignore
+	//@Ignore
 	public static final int TYPE_FORUM_REPLY = 4;
 
-	@Ignore
+	//@Ignore
 	public static final int TYPE_MESSAGE = 5;
 
-	@Ignore
+	//@Ignore
 	public static final int TYPE_PARTICIPANT = 6;
 
-	@Ignore
+	//@Ignore
 	public static final int TYPE_CONTACT = 7;
 
-	@Ignore
+	//@Ignore
 	public static final int TYPE_EVENT = 8;
 
 	int notificationtype;
@@ -251,4 +252,8 @@ public class MDroidNotification extends SugarRecord<MDroidNotification> {
 		this.extras = extras;
 	}
 
+
+    public void save()
+    {
+    }
 }

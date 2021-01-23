@@ -1,5 +1,6 @@
 package in.co.praveenkumar.mdroid.task;
 
+import in.co.praveenkumar.mdroid.model.DB;
 import in.co.praveenkumar.mdroid.model.MDroidNotification;
 import in.co.praveenkumar.mdroid.model.MoodleCourse;
 import in.co.praveenkumar.mdroid.model.MoodleUser;
@@ -86,14 +87,14 @@ public class UserSyncTask {
 			mUser.setSiteid(siteid);
 			mUser.setCourseid(courseid);
 
-			dbUsers = MoodleUser.find(MoodleUser.class,
+			dbUsers = DB.find(MoodleUser.class,
 					"userid = ? and siteid = ? and courseid = ?",
 					String.valueOf(mUser.getUserid()), String.valueOf(siteid), String.valueOf(courseid));
 			if (!dbUsers.isEmpty())
 				mUser.setId(dbUsers.get(0).getId());
 			// set notifications if enabled
 			else if (notification) {
-				List<MoodleCourse> dbCourses = MoodleCourse.find(
+				List<MoodleCourse> dbCourses = DB.find(
 						MoodleCourse.class, "courseid = ? and siteid = ?",
 						String.valueOf(siteid), String.valueOf(courseid));
 				MoodleCourse course = (dbCourses != null && !dbCourses.isEmpty()) ? dbCourses

@@ -1,5 +1,6 @@
 package in.co.praveenkumar.mdroid.task;
 
+import in.co.praveenkumar.mdroid.model.*;
 import in.co.praveenkumar.mdroid.model.MoodleCourse;
 import in.co.praveenkumar.mdroid.model.MoodleSiteInfo;
 import in.co.praveenkumar.mdroid.moodlerest.MoodleRestCourse;
@@ -60,7 +61,7 @@ public class CourseSyncTask {
 			course.setSiteid(siteid);
 
 			// Update or save in database
-			dbCourses = MoodleCourse.find(MoodleCourse.class,
+			dbCourses = DB.find(MoodleCourse.class,
 					"courseid = ? and siteid = ?", course.getCourseid() + "",
 					course.getSiteid() + "");
 			if (dbCourses != null && !dbCourses.isEmpty()) {
@@ -84,7 +85,7 @@ public class CourseSyncTask {
 	 */
 	public Boolean syncUserCourses() {
 		// Get userid
-		MoodleSiteInfo site = MoodleSiteInfo.findById(MoodleSiteInfo.class,
+		MoodleSiteInfo site = DB.findById(MoodleSiteInfo.class,
 				siteid);
 
 		if (site == null)
@@ -117,7 +118,7 @@ public class CourseSyncTask {
 			course.setIsUserCourse(true);
 
 			// Update or save in database
-			dbCourses = MoodleCourse.find(MoodleCourse.class,
+			dbCourses = DB.find(MoodleCourse.class,
 					"courseid = ? and siteid = ?", course.getCourseid() + "",
 					course.getSiteid() + "");
 			if (!dbCourses.isEmpty()) {

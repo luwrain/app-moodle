@@ -1,6 +1,6 @@
 package in.co.praveenkumar.mdroid.helper;
 
-import in.co.praveenkumar.R;
+//import in.co.praveenkumar.R;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;

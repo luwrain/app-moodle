@@ -1,17 +1,18 @@
 package in.co.praveenkumar.mdroid.model;
 
 import com.google.gson.annotations.SerializedName;
-import com.orm.SugarRecord;
-import com.orm.dsl.Ignore;
+//import com.orm.SugarRecord;
+//import com.orm.dsl.Ignore;
 
-public class MoodleMessage extends SugarRecord<MoodleMessage> {
-	@Ignore
+public class MoodleMessage //extends SugarRecord<MoodleMessage>
+{
+	//@Ignore
 	public static final int MESSAGE_FORMAT_HTML = 1;
-	@Ignore
+	//@Ignore
 	public static final int MESSAGE_FORMAT_MOODLE = 0;
-	@Ignore
+	//@Ignore
 	public static final int MESSAGE_FORMAT_PLAIN = 2;
-	@Ignore
+	//@Ignore
 	public static final int MESSAGE_FORMAT_MARKDOWN = 4;
 
 	/*
@@ -408,5 +409,19 @@ public class MoodleMessage extends SugarRecord<MoodleMessage> {
 	public void setSiteid(long siteid) {
 		this.siteid = siteid;
 	}
+
+    
+    public long getId()
+    {
+	return 0;
+    }
+
+    public void setId(long id)
+    {
+    }
+
+    public void save()
+    {
+    }
 
 }

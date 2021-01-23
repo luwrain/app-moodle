@@ -1,7 +1,7 @@
 package in.co.praveenkumar.mdroid.helper;
 
 
-import android.util.Patterns;
+//import android.util.Patterns;
 
 public class FormValidate {
     String username;
@@ -86,10 +86,12 @@ public class FormValidate {
      * @return Error message (null if valid)
      */
     public String getUrlError(String url) {
+	/*
         if (url.contentEquals(""))
             return "url can't be empty";
         if (!Patterns.WEB_URL.matcher(url).matches())
             return "Invalid moodle url";
+	*/
         return null;
     }
 

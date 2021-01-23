@@ -1,6 +1,6 @@
 package in.co.praveenkumar.mdroid.helper;
 
-import in.co.praveenkumar.R;
+//import in.co.praveenkumar.R;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.widget.AbsListView;
 import android.widget.ListView;

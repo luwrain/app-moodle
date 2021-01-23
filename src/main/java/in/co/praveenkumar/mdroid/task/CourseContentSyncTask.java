@@ -1,5 +1,6 @@
 package in.co.praveenkumar.mdroid.task;
 
+import in.co.praveenkumar.mdroid.model.DB;
 import in.co.praveenkumar.mdroid.model.MDroidNotification;
 import in.co.praveenkumar.mdroid.model.MoodleCourse;
 import in.co.praveenkumar.mdroid.model.MoodleModule;
@@ -79,7 +80,7 @@ public class CourseContentSyncTask {
 	public Boolean syncCourseContents(int courseid) {
 
 		// Get the course from database for all future use
-		List<MoodleCourse> dbCourses = MoodleCourse.find(MoodleCourse.class,
+		List<MoodleCourse> dbCourses = DB.find(MoodleCourse.class,
 				"siteid = ? and courseid = ?", String.valueOf(siteid), String.valueOf(courseid));
 		if (dbCourses == null || dbCourses.isEmpty()) {
 			error = "Course not found in database!";
@@ -112,7 +113,7 @@ public class CourseContentSyncTask {
 			section.setParentid(course.getId());
 
 			// Update or save in database
-			dbSections = MoodleSection.find(MoodleSection.class,
+			dbSections = DB.find(MoodleSection.class,
 					"sectionid = ? and siteid = ?",
 					String.valueOf(section.getSectionid()), String.valueOf(section.getSiteid()));
 			if (!dbSections.isEmpty())
@@ -159,7 +160,7 @@ public class CourseContentSyncTask {
 			/*
 			 * -TODO- Should more conditions be added?
 			 */
-			dbModules = MoodleModule.find(MoodleModule.class,
+			dbModules = DB.find(MoodleModule.class,
 					"moduleid = ? and siteid = ?", String.valueOf(module.getModuleid()),
 					String.valueOf(module.getSiteid()));
 			if (!dbModules.isEmpty())
@@ -214,7 +215,7 @@ public class CourseContentSyncTask {
 			content.setModuleid(moduleid);
 
 			// Update or save in database
-			dbContents = MoodleModuleContent.find(MoodleModuleContent.class,
+			dbContents = DB.find(MoodleModuleContent.class,
 					"parentid = ? and siteid = ?", String.valueOf(content.getParentid()),
 					String.valueOf(content.getSiteid()));
 			if (!dbContents.isEmpty())
@@ -237,19 +238,19 @@ public class CourseContentSyncTask {
 	 * @author Praveen Kumar Pendyala (praveen@praveenkumar.co.in)
 	 */
 	public ArrayList<MoodleSection> getCourseContents(int courseid) {
-		List<MoodleSection> sections = MoodleSection.find(MoodleSection.class,
+		List<MoodleSection> sections = DB.find(MoodleSection.class,
 				"courseid = ? and siteid = ?", String.valueOf(courseid), String.valueOf(siteid));
 
 		// Add modules to sections
 		List<MoodleModule> dbModules;
 		List<MoodleModuleContent> dbContents;
 		for (int i = 0; i < sections.size(); i++) {
-			dbModules = MoodleModule.find(MoodleModule.class, "parentid = ?",
+			dbModules = DB.find(MoodleModule.class, "parentid = ?",
 					String.valueOf(sections.get(i).getId()));
 
 			// Set module contents to modules
 			for (int j = 0; j < dbModules.size(); j++) {
-				dbContents = MoodleModuleContent.find(
+				dbContents = DB.find(
 						MoodleModuleContent.class, "parentid = ?", String.valueOf(dbModules
 								.get(j).getId()));
 				dbModules.get(j).setContents(dbContents);

@@ -1,5 +1,6 @@
 package in.co.praveenkumar.mdroid.task;
 
+import in.co.praveenkumar.mdroid.model.DB;
 import in.co.praveenkumar.mdroid.model.MDroidNotification;
 import in.co.praveenkumar.mdroid.model.MoodleMessage;
 import in.co.praveenkumar.mdroid.model.MoodleMessages;
@@ -101,7 +102,7 @@ public class MessageSyncTask {
 		MoodleMessage message = new MoodleMessage();
 
 		// Get site info - used for notification setting
-		MoodleSiteInfo site = MoodleSiteInfo.findById(MoodleSiteInfo.class,
+		MoodleSiteInfo site = DB.findById(MoodleSiteInfo.class,
 				siteid);
 		int currentUserid = (site != null) ? site.getUserid() : 0;
 
@@ -112,7 +113,7 @@ public class MessageSyncTask {
 				/*
 				 * -TODO- Improve this search with only Sql operation
 				 */
-				dbMessages = MoodleMessage.find(MoodleMessage.class,
+				dbMessages = DB.find(MoodleMessage.class,
 						"messageid = ? and siteid = ?", String.valueOf(message.getMessageid())
 								, String.valueOf(siteid));
 				if (!dbMessages.isEmpty())

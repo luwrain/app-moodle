@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
-import com.orm.SugarRecord;
-import com.orm.dsl.Ignore;
+//import com.orm.SugarRecord;
+//import com.orm.dsl.Ignore;
 
-public class MoodleSection extends SugarRecord<MoodleSection> {
+public class MoodleSection //extends SugarRecord<MoodleSection>
+{
 	/**
 	 * A section can be a week of contents or whatever the admin sets it.
 	 */
@@ -28,7 +29,7 @@ public class MoodleSection extends SugarRecord<MoodleSection> {
 	@SerializedName("summaryformat")
 	int summaryformat;
 
-	@Ignore
+	//@Ignore
 	@SerializedName("modules")
 	ArrayList<MoodleModule> modules;
 
@@ -159,4 +160,17 @@ public class MoodleSection extends SugarRecord<MoodleSection> {
 		this.siteid = siteid;
 	}
 
+
+    public long getId()
+    {
+	return 0;
+    }
+
+    public void setId(long id)
+    {
+    }
+
+    public void save()
+    {
+    }
 }

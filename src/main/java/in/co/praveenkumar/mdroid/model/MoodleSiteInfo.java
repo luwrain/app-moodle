@@ -2,10 +2,11 @@ package in.co.praveenkumar.mdroid.model;
 
 import java.util.ArrayList;
 
-import com.orm.SugarRecord;
-import com.orm.dsl.Ignore;
+//import com.orm.SugarRecord;
+//import com.orm.dsl.Ignore;
 
-public class MoodleSiteInfo extends SugarRecord<MoodleSiteInfo> {
+public class MoodleSiteInfo //extends SugarRecord<MoodleSiteInfo>
+{
 	String sitename;
 	String username;
 	String firstname;
@@ -15,7 +16,7 @@ public class MoodleSiteInfo extends SugarRecord<MoodleSiteInfo> {
 	int userid;
 	String siteurl;
 	String userpictureurl;
-	@Ignore
+	//@Ignore
 	ArrayList<MoodleFunction> functions;
 	int downloadfiles;
 	int uploadfiles;
@@ -24,13 +25,13 @@ public class MoodleSiteInfo extends SugarRecord<MoodleSiteInfo> {
 	String mobilecssurl;
 
 	// Errors. Not to be stored in sql db.
-	@Ignore
+	//@Ignore
 	String exception;
-	@Ignore
+	//@Ignore
 	String errorcode;
-	@Ignore
+	//@Ignore
 	String message;
-	@Ignore
+	//@Ignore
 	String debuginfo;
 
 	/*

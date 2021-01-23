@@ -1,5 +1,6 @@
 package in.co.praveenkumar.mdroid.task;
 
+import in.co.praveenkumar.mdroid.model.DB;
 import in.co.praveenkumar.mdroid.model.MDroidNotification;
 import in.co.praveenkumar.mdroid.model.MoodleCourse;
 import in.co.praveenkumar.mdroid.model.MoodleEvent;
@@ -115,10 +116,10 @@ public class EventSyncTask {
 				event = events.get(i);
 				event.setSiteid(siteid);
 
-				dbEvents = MoodleEvent.find(MoodleEvent.class,
+				dbEvents = DB.find(MoodleEvent.class,
 						"eventid = ? and siteid = ?", String.valueOf(event.getEventid()),
 						String.valueOf(siteid));
-				dbCourses = MoodleCourse.find(MoodleCourse.class,
+				dbCourses = DB.find(MoodleCourse.class,
 						"courseid = ? and siteid = ?",
 						String.valueOf(event.getCourseid()), String.valueOf(siteid));
 				if (!dbCourses.isEmpty())

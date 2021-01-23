@@ -10,7 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
-import android.util.Log;
+import org.luwrain.core.*;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -48,7 +48,7 @@ public class MoodleRestToken {
 			urlParams = "username=" + URLEncoder.encode(uname, "UTF-8")
 					+ "&password=" + URLEncoder.encode(pswd, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
-			Log.d(DEBUG_TAG, "credential encoding failed!");
+			Log.debug(DEBUG_TAG, "credential encoding failed!");
 			e.printStackTrace();
 		}
 
@@ -122,7 +122,7 @@ public class MoodleRestToken {
 			urlParams = "username=" + URLEncoder.encode(uname, "UTF-8")
 					+ "&password=" + URLEncoder.encode(pswd, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
-			Log.d(DEBUG_TAG, "credential encoding failed!");
+			Log.debug(DEBUG_TAG, "credential encoding failed!");
 			e.printStackTrace();
 		}
 

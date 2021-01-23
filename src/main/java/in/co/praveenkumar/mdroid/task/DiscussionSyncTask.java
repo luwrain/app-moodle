@@ -1,5 +1,6 @@
 package in.co.praveenkumar.mdroid.task;
 
+import in.co.praveenkumar.mdroid.model.DB;
 import in.co.praveenkumar.mdroid.model.MDroidNotification;
 import in.co.praveenkumar.mdroid.model.MoodleCourse;
 import in.co.praveenkumar.mdroid.model.MoodleDiscussion;
@@ -106,7 +107,7 @@ public class DiscussionSyncTask {
 			topic = mTopics.get(i);
 			topic.setSiteid(siteid);
 
-			dbTopics = MoodleDiscussion.find(MoodleDiscussion.class,
+			dbTopics = DB.find(MoodleDiscussion.class,
 					"discussionid = ? and siteid = ?", String.valueOf(topic.getDiscussionid())
 							, String.valueOf(siteid));
 			if (!dbTopics.isEmpty())
@@ -114,7 +115,7 @@ public class DiscussionSyncTask {
 
 			// set notifications if enabled
 			else if (notification) {
-				List<MoodleCourse> dbCourses = MoodleCourse.find(
+				List<MoodleCourse> dbCourses = DB.find(
 						MoodleCourse.class, "courseid = ? and siteid = ?",
 						String.valueOf(siteid), String.valueOf(topic.getCourseid()));
 				MoodleCourse course = (dbCourses != null && !dbCourses.isEmpty()) ? dbCourses

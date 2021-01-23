@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
-import com.orm.SugarRecord;
-import com.orm.dsl.Ignore;
+//import com.orm.SugarRecord;
+//import com.orm.dsl.Ignore;
 
-public class MoodleModule extends SugarRecord<MoodleModule> {
+public class MoodleModule //extends SugarRecord<MoodleModule>
+{
 	/**
 	 * Note: The name Module is interchangeably used as Activity
 	 */
@@ -45,7 +46,7 @@ public class MoodleModule extends SugarRecord<MoodleModule> {
 	@SerializedName("indent")
 	int indent;
 
-	@Ignore
+	//@Ignore
 	@SerializedName("contents")
 	ArrayList<MoodleModuleContent> contents;
 
@@ -250,5 +251,19 @@ public class MoodleModule extends SugarRecord<MoodleModule> {
 	public void setSiteid(Long siteid) {
 		this.siteid = siteid;
 	}
+
+    
+    public long getId()
+    {
+	return 0;
+    }
+
+    public void setId(long id)
+    {
+    }
+
+    public void save()
+    {
+    }
 
 }

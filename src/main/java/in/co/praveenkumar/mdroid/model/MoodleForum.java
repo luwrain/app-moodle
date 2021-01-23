@@ -1,10 +1,11 @@
 package in.co.praveenkumar.mdroid.model;
 
 import com.google.gson.annotations.SerializedName;
-import com.orm.SugarRecord;
-import com.orm.dsl.Ignore;
+//import com.orm.SugarRecord;
+//import com.orm.dsl.Ignore;
 
-public class MoodleForum extends SugarRecord<MoodleForum> {
+public class MoodleForum //extends SugarRecord<MoodleForum>
+{
 
 	// since id is a reserved field in SugarRecord
 	@SerializedName("id")
@@ -77,19 +78,19 @@ public class MoodleForum extends SugarRecord<MoodleForum> {
 	int cmid;
 
 	// Errors. Not to be stored in sql db.
-	@Ignore
+	//Ignore
 	@SerializedName("exception")
 	String exception;
 
-	@Ignore
+	//Ignore
 	@SerializedName("errorcode")
 	String errorcode;
 
-	@Ignore
+	//Ignore
 	@SerializedName("message")
 	String message;
 
-	@Ignore
+	//Ignore
 	@SerializedName("debuginfo")
 	String debuginfo;
 
@@ -375,5 +376,20 @@ public class MoodleForum extends SugarRecord<MoodleForum> {
 	public void setSiteid(long siteid) {
 		this.siteid = siteid;
 	}
+
+
+    
+    public long getId()
+    {
+	return 0;
+    }
+
+    public void setId(long id)
+    {
+    }
+
+    public void save()
+    {
+    }
 
 }

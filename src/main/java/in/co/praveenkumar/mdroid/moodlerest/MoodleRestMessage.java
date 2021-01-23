@@ -9,7 +9,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.util.Log;
+import org.luwrain.core.*;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -41,7 +41,7 @@ public class MoodleRestMessage {
 		ArrayList<MoodleMessage> mMessages = new ArrayList<>();
 
 		if (message == null) {
-			Log.d(DEBUG_TAG, "Message not setup correctly");
+			Log.debug(DEBUG_TAG, "Message not setup correctly");
 			error = "Message not setup correctly. Report to developer";
 			return false;
 		}
@@ -100,7 +100,7 @@ public class MoodleRestMessage {
 			}
 
 		} catch (Exception e) {
-			Log.d(DEBUG_TAG, "URL encoding failed");
+			Log.debug(DEBUG_TAG, "URL encoding failed");
 			error = "Check internet connection!";
 			e.printStackTrace();
 			return false;
@@ -169,7 +169,7 @@ public class MoodleRestMessage {
 					.addSerializationExclusionStrategy(ex).create();
 			mMessages = gson.fromJson(reader, MoodleMessages.class);
 		} catch (Exception e) {
-			Log.d(DEBUG_TAG, "URL encoding failed");
+			Log.debug(DEBUG_TAG, "URL encoding failed");
 			e.printStackTrace();
 		}
 

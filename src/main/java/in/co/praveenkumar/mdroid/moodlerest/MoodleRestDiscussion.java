@@ -8,7 +8,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.util.Log;
+import org.luwrain.core.*;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -66,7 +66,7 @@ public class MoodleRestDiscussion {
 					new TypeToken<List<MoodleDiscussion>>() {
 					}.getType());
 		} catch (Exception e) {
-			Log.d(DEBUG_TAG, "URL encoding failed");
+			Log.debug(DEBUG_TAG, "URL encoding failed");
 			e.printStackTrace();
 		}
 

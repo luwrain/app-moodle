@@ -3,10 +3,11 @@ package in.co.praveenkumar.mdroid.model;
 import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
-import com.orm.SugarRecord;
-import com.orm.dsl.Ignore;
+//import com.orm.SugarRecord;
+//import com.orm.dsl.Ignore;
 
-public class MoodleUser extends SugarRecord<MoodleUser> {
+public class MoodleUser //extends SugarRecord<MoodleUser>
+{
 
 	// since id is a reserved field in SugarRecord
 	@SerializedName("id")
@@ -111,7 +112,7 @@ public class MoodleUser extends SugarRecord<MoodleUser> {
 	@SerializedName("profileimageurl")
 	String profileimageurl;
 
-	@Ignore
+	//@Ignore
 	@SerializedName("enrolledcourses")
 	List<MoodleUserCourse> enrolledcourses;
 
@@ -128,9 +129,9 @@ public class MoodleUser extends SugarRecord<MoodleUser> {
 	/**
 	 * Supports saving list of enrolled courses of the user as well.
 	 */
-	@Override
+	//@Override
 	public void save() {
-		super.save();
+	    //super.save();
 
 		// Save users' enrolled courses
 		if (enrolledcourses == null || enrolledcourses.isEmpty())
@@ -142,7 +143,7 @@ public class MoodleUser extends SugarRecord<MoodleUser> {
 			mUserCourse = enrolledcourses.get(i);
 			mUserCourse.setSiteid(this.siteid);
 			mUserCourse.setUserid(this.userid);
-			dbUserCourses = MoodleUserCourse.find(MoodleUserCourse.class,
+			dbUserCourses = DB.find(MoodleUserCourse.class,
 					"userid = ? and siteid = ? and courseid = ?", String.valueOf(userid),
 					String.valueOf(siteid), String.valueOf(mUserCourse.getCourseid()));
 			if (dbUserCourses != null && !dbUserCourses.isEmpty())
@@ -507,4 +508,13 @@ public class MoodleUser extends SugarRecord<MoodleUser> {
 	public void setEnrolledcourses(List<MoodleUserCourse> enrolledcourses) {
 		this.enrolledcourses = enrolledcourses;
 	}
+
+    public int getId()
+    {
+	return 0;
+    }
+
+    public void setId(int id)
+    {
+    }
 }

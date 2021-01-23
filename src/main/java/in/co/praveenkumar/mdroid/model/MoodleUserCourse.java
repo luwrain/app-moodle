@@ -1,7 +1,8 @@
 package in.co.praveenkumar.mdroid.model;
 
 import com.google.gson.annotations.SerializedName;
-import com.orm.SugarRecord;
+import lombok.*;
+//import com.orm.SugarRecord;
 
 /**
  * Represents course of any moodle user. Used in User profiles listing. A better
@@ -11,7 +12,11 @@ import com.orm.SugarRecord;
  * @author Praveen Kumar Pendyala<praveen@praveenkumar.co.in>
  * 
  */
-public class MoodleUserCourse extends SugarRecord<MoodleUserCourse> {
+@Data
+public class MoodleUserCourse //extends SugarRecord<MoodleUserCourse>
+{
+    int id;
+    
 	@SerializedName("id")
 	int courseid;
 
@@ -87,4 +92,8 @@ public class MoodleUserCourse extends SugarRecord<MoodleUserCourse> {
 	public void setUserid(int userid) {
 		this.userid = userid;
 	}
+
+    public void save()
+    {
+    }
 }

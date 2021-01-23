@@ -1,5 +1,6 @@
 package in.co.praveenkumar.mdroid.task;
 
+import in.co.praveenkumar.mdroid.model.*;
 import in.co.praveenkumar.mdroid.model.MDroidNotification;
 import in.co.praveenkumar.mdroid.model.MoodleDiscussion;
 import in.co.praveenkumar.mdroid.model.MoodlePost;
@@ -98,7 +99,7 @@ public class PostSyncTask {
 				post = mPosts.get(i);
 				post.setSiteid(siteid);
 
-				dbPosts = MoodlePost.find(MoodlePost.class,
+				dbPosts = DB.find(MoodlePost.class,
 						"postid = ? and siteid = ?", String.valueOf(post.getPostid()),
 						String.valueOf(siteid));
 				if (!dbPosts.isEmpty())
@@ -106,8 +107,7 @@ public class PostSyncTask {
 
 				// set notifications if enabled
 				else if (notification) {
-					List<MoodleDiscussion> dbDiscussions = MoodleDiscussion
-							.find(MoodleDiscussion.class,
+					List<MoodleDiscussion> dbDiscussions = DB.find(MoodleDiscussion.class,
 									"discussionid = ? and siteid = ?", String.valueOf(siteid)
 											, String.valueOf(discussionid));
 					MoodleDiscussion discussion = (dbDiscussions != null && !dbDiscussions.isEmpty()) ? dbDiscussions.get(0) : null;

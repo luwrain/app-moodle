@@ -1,17 +1,18 @@
 package in.co.praveenkumar.mdroid.model;
 
 import com.google.gson.annotations.SerializedName;
-import com.orm.SugarRecord;
-import com.orm.dsl.Ignore;
+//import com.orm.SugarRecord;
+//import com.orm.dsl.Ignore;
 
-public class MoodleContact extends SugarRecord<MoodleContact> {
+public class MoodleContact //extends SugarRecord<MoodleContact>
+{
 
 	// Constants
-	@Ignore
+	//@Ignore
 	public static final int STATUS_ONLINE = 0;
-	@Ignore
+	////@Ignore
 	public static final int STATUS_OFFLINE = 1;
-	@Ignore
+	////@Ignore
 	public static final int STATUS_STRANGER = 2;
 
 	// since id is a reserved field in SugarRecord
@@ -158,5 +159,19 @@ public class MoodleContact extends SugarRecord<MoodleContact> {
 		@SerializedName("message")
 		String message;// untranslated english message to explain the warning
 	}
+
+    
+    public long getId()
+    {
+	return 0;
+    }
+
+    public void setId(long id)
+    {
+    }
+
+    public void save()
+    {
+    }
 
 }

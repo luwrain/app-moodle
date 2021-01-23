@@ -1,10 +1,10 @@
 package in.co.praveenkumar.mdroid.model;
 
 import com.google.gson.annotations.SerializedName;
-import com.orm.SugarRecord;
+//import com.orm.SugarRecord;
 
-public class MoodleEvent extends SugarRecord<MoodleEvent> {
-
+public class MoodleEvent //extends SugarRecord<MoodleEvent> {
+{
 	// since id is a reserved field in SugarRecord
 	@SerializedName("id")
 	int eventid;
@@ -264,4 +264,18 @@ public class MoodleEvent extends SugarRecord<MoodleEvent> {
 		return subscriptionid;
 	}
 
+
+    public int getId()
+    {
+	return 0;
+    }
+
+    public void setId(int id)
+    {
+	
+    }
+
+    public void save()
+    {
+    }
 }

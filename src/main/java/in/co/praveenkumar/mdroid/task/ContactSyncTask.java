@@ -1,5 +1,6 @@
 package in.co.praveenkumar.mdroid.task;
 
+import in.co.praveenkumar.mdroid.model.*;
 import in.co.praveenkumar.mdroid.model.MDroidNotification;
 import in.co.praveenkumar.mdroid.model.MoodleContact;
 import in.co.praveenkumar.mdroid.model.MoodleContacts;
@@ -155,7 +156,7 @@ public class ContactSyncTask {
 				contact.setStatus(status);
 				contact.setSiteid(siteid);
 
-				dbContacts = MoodleContact.find(MoodleContact.class,
+				dbContacts = DB.find(MoodleContact.class,
 						"contactid = ? and siteid = ?", contacts.get(i)
 								.getContactid() + "", siteid + "");
 				if (!dbContacts.isEmpty())

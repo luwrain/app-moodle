@@ -6,7 +6,7 @@ import in.co.praveenkumar.mdroid.model.MoodlePosts;
 import java.io.Reader;
 import java.net.URLEncoder;
 
-import android.util.Log;
+import org.luwrain.core.*;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -56,7 +56,7 @@ public class MoodleRestPost {
 					.addSerializationExclusionStrategy(ex).create();
 			mPosts = gson.fromJson(reader, MoodlePosts.class);
 		} catch (Exception e) {
-			Log.d(DEBUG_TAG, "URL encoding failed");
+			Log.debug(DEBUG_TAG, "URL encoding failed");
 			e.printStackTrace();
 		}
 

@@ -10,7 +10,7 @@ import java.io.Reader;
 import java.net.URLEncoder;
 import java.util.List;
 
-import android.util.Log;
+import org.luwrain.core.*;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -61,7 +61,7 @@ public class MoodleRestContact {
 			reader.close();
 
 		} catch (Exception e) {
-			Log.d(DEBUG_TAG, "URL encoding failed");
+			Log.debug(DEBUG_TAG, "URL encoding failed");
 			error = "Network issue!";
 			e.printStackTrace();
 		}
@@ -116,13 +116,13 @@ public class MoodleRestContact {
 				Gson gson = new GsonBuilder().create();
 				MoodleException exception = gson.fromJson(reader,
 						MoodleException.class);
-				Log.d(DEBUG_TAG, exception.toString());
+				Log.debug(DEBUG_TAG, exception.toString());
 				error = "Moodle error: " + exception.getMessage();
 			}
 
 			// Some network issue probably
 			catch (Exception e1) {
-				Log.d(DEBUG_TAG, "Network issue!");
+				Log.debug(DEBUG_TAG, "Network issue!");
 				error = "Network issue!";
 				e1.printStackTrace();
 			}
@@ -131,7 +131,7 @@ public class MoodleRestContact {
 
 		// Unknow error
 		catch (Exception e) {
-			Log.d(DEBUG_TAG, "Unknown error");
+			Log.debug(DEBUG_TAG, "Unknown error");
 			error = "Unknown error";
 			e.printStackTrace();
 		}

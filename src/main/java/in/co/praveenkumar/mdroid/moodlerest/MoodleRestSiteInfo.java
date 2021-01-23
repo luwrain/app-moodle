@@ -5,7 +5,7 @@ import in.co.praveenkumar.mdroid.model.MoodleSiteInfo;
 import java.io.Reader;
 import java.net.URLEncoder;
 
-import android.util.Log;
+import org.luwrain.core.*;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -49,7 +49,7 @@ public class MoodleRestSiteInfo {
 			reader.close();
 
 		} catch (Exception e) {
-			Log.d(DEBUG_TAG, "URL encoding failed");
+			Log.debug(DEBUG_TAG, "URL encoding failed");
 			e.printStackTrace();
 		}
 

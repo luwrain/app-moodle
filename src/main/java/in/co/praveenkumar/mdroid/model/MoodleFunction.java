@@ -1,8 +1,7 @@
 package in.co.praveenkumar.mdroid.model;
 
-import com.orm.SugarRecord;
-
-public class MoodleFunction extends SugarRecord<MoodleFunction> {
+public class MoodleFunction
+{
 	private String name;
 	private String version;
 

@@ -7,7 +7,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import android.util.Log;
+import org.luwrain.core.*;
 
 public class MoodleRestCall {
 	private final String DEBUG_TAG = "MoodleRestCall";
@@ -25,7 +25,7 @@ public class MoodleRestCall {
 	 */
 	public InputStreamReader fetchContent(String restUrl, String params) {
 
-		Log.d(DEBUG_TAG, restUrl + params);
+		Log.debug(DEBUG_TAG, restUrl + params);
 		HttpURLConnection con;
 		try {
 			con = (HttpURLConnection) new URL(restUrl + params)

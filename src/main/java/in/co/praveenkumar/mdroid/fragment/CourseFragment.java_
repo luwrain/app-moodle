@@ -1,6 +1,6 @@
 package in.co.praveenkumar.mdroid.fragment;
 
-import in.co.praveenkumar.R;
+//import in.co.praveenkumar.R;
 import in.co.praveenkumar.mdroid.activity.CourseContentActivity;
 import in.co.praveenkumar.mdroid.helper.SessionSetting;
 import in.co.praveenkumar.mdroid.helper.Workaround;
@@ -85,7 +85,7 @@ public class CourseFragment extends Fragment implements OnRefreshListener {
 		else
 			mCourses = MoodleCourse.find(MoodleCourse.class, "siteid = ?",
 					session.getCurrentSiteId() + "");
-
+		/*
 		courseEmptyLayout = (LinearLayout) rootView
 				.findViewById(R.id.course_empty_layout);
 		ListView courseList = (ListView) rootView
@@ -103,8 +103,10 @@ public class CourseFragment extends Fragment implements OnRefreshListener {
 			new courseSyncerBg().execute("");
 
 		return rootView;
+		*/
 	}
 
+    /*
 	public class CourseListAdapter extends BaseAdapter {
 		private final Context context;
 
@@ -301,5 +303,5 @@ public class CourseFragment extends Fragment implements OnRefreshListener {
 	public void onRefresh() {
 		new courseSyncerBg().execute("");
 	}
-
+*/
 }
