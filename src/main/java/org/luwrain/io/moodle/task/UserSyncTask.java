@@ -1,7 +1,7 @@
 package org.luwrain.io.moodle.task;
 
 import org.luwrain.io.moodle.model.*;
-import org.luwrain.io.moodle.moodlerest.MoodleRestUser;
+import org.luwrain.io.moodle.rest.MoodleRestUser;
 
 import java.util.List;
 

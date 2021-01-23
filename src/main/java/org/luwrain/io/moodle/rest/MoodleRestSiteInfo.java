@@ -1,4 +1,4 @@
-package org.luwrain.io.moodle.moodlerest;
+package org.luwrain.io.moodle.rest;
 
 import org.luwrain.io.moodle.model.MoodleSiteInfo;
 

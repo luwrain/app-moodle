@@ -5,7 +5,7 @@ import org.luwrain.io.moodle.model.MDroidNotification;
 import org.luwrain.io.moodle.model.MoodleMessage;
 import org.luwrain.io.moodle.model.MoodleMessages;
 import org.luwrain.io.moodle.model.MoodleSiteInfo;
-import org.luwrain.io.moodle.moodlerest.MoodleRestMessage;
+import org.luwrain.io.moodle.rest.MoodleRestMessage;
 
 import java.util.List;
 

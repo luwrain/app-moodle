@@ -5,7 +5,7 @@ import org.luwrain.io.moodle.model.MDroidNotification;
 import org.luwrain.io.moodle.model.MoodleDiscussion;
 import org.luwrain.io.moodle.model.MoodlePost;
 import org.luwrain.io.moodle.model.MoodlePosts;
-import org.luwrain.io.moodle.moodlerest.MoodleRestPost;
+import org.luwrain.io.moodle.rest.MoodleRestPost;
 
 import java.util.ArrayList;
 import java.util.List;

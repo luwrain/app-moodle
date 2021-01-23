@@ -1,7 +1,7 @@
 package org.luwrain.io.moodle.task;
 
 import org.luwrain.io.moodle.model.*;
-import org.luwrain.io.moodle.moodlerest.MoodleRestCourseContent;
+import org.luwrain.io.moodle.rest.MoodleRestCourseContent;
 
 import java.util.ArrayList;
 import java.util.List;

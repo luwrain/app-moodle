@@ -1,7 +1,7 @@
-package org.luwrain.io.moodle.moodlerest;
+package org.luwrain.io.moodle.rest;
 
 import org.luwrain.io.moodle.helper.GsonExclude;
-import org.luwrain.io.moodle.model.MoodleForum;
+import org.luwrain.io.moodle.model.MoodleDiscussion;
 
 import java.io.Reader;
 import java.net.URLEncoder;
@@ -14,48 +14,41 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
-public class MoodleRestForum {
-	private final String DEBUG_TAG = "MoodleRestForum";
+public class MoodleRestDiscussion {
+	private final String DEBUG_TAG = "MoodleRestDiscussion";
 	private String mUrl;
 	private String token;
 
-	public MoodleRestForum(String mUrl, String token) {
+	public MoodleRestDiscussion(String mUrl, String token) {
 		this.mUrl = mUrl;
 		this.token = token;
 	}
 
 	/**
-	 * Get all the forums of given course in the Moodle site.<br/>
+	 * Get all discussions for the list of forums.
 	 * 
-	 * @return ArrayList of MoodleForums
+	 * @param forumids
+	 *            List of forumids
 	 * 
-	 * @author Praveen Kumar Pendyala (praveen@praveenkumar.co.in)
-	 */
-	public ArrayList<MoodleForum> getForums(String courseid) {
-		ArrayList<String> courseids = new ArrayList<>();
-		courseids.add(courseid);
-		return getForums(courseids);
-	}
-
-	/**
-	 * Get all the forums of given courses in the Moodle site.<br/>
-	 * 
-	 * @return ArrayList of MoodleForums
+	 * @return ArrayList of MoodleDiscussion
 	 * 
 	 * @author Praveen Kumar Pendyala (praveen@praveenkumar.co.in)
 	 */
-	public ArrayList<MoodleForum> getForums(ArrayList<String> courseids) {
-		ArrayList<MoodleForum> mForums = new ArrayList<>();
+	public ArrayList<MoodleDiscussion> getDiscussions(List<String> forumids) {
+		ArrayList<MoodleDiscussion> mDiscussions = null;
 		String format = MoodleRestOption.RESPONSE_FORMAT;
-		String function = MoodleRestOption.FUNCTION_GET_FORUMS;
+		String function = MoodleRestOption.FUNCTION_GET_DISCUSSIONS;
 
 		try {
 			// Adding all parameters.
 			String params = "";
-			for (int i = 0; i < courseids.size(); i++) {
-				params += "&courseids[" + i + "]="
-						+ URLEncoder.encode(courseids.get(i), "UTF-8");
-			}
+
+			if (forumids == null)
+				forumids = new ArrayList<>();
+
+			for (int i = 0; i < forumids.size(); i++)
+				params += "&forumids[" + i + "]="
+						+ URLEncoder.encode(forumids.get(i), "UTF-8");
 
 			// Build a REST call url to make a call.
 			String restUrl = mUrl + "/webservice/rest/server.php" + "?wstoken="
@@ -69,15 +62,15 @@ public class MoodleRestForum {
 			Gson gson = new GsonBuilder()
 					.addDeserializationExclusionStrategy(ex)
 					.addSerializationExclusionStrategy(ex).create();
-			mForums = gson.fromJson(reader, new TypeToken<List<MoodleForum>>() {
-			}.getType());
-			reader.close();
-
+			mDiscussions = gson.fromJson(reader,
+					new TypeToken<List<MoodleDiscussion>>() {
+					}.getType());
 		} catch (Exception e) {
 			Log.debug(DEBUG_TAG, "URL encoding failed");
 			e.printStackTrace();
 		}
 
-		return mForums;
+		return mDiscussions;
 	}
+
 }

@@ -1,4 +1,4 @@
-package org.luwrain.io.moodle.moodlerest;
+package org.luwrain.io.moodle.rest;
 
 /**
  * All Moodle rest related constants, function values etc.,.

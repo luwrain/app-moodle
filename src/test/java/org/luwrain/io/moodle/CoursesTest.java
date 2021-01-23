@@ -8,7 +8,7 @@ import org.junit.*;
 
 import org.luwrain.core.*;
 import org.luwrain.io.moodle.model.*;
-import org.luwrain.io.moodle.moodlerest.*;
+import org.luwrain.io.moodle.rest.*;
 
 public class CoursesTest extends Assert
 {

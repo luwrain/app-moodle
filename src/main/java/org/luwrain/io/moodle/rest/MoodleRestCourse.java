@@ -1,5 +1,5 @@
 
-package org.luwrain.io.moodle.moodlerest;
+package org.luwrain.io.moodle.rest;
 
 import java.util.*;
 import java.io.*;

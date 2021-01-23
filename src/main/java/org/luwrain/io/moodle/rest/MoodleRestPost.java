@@ -1,54 +1,46 @@
-package org.luwrain.io.moodle.moodlerest;
+package org.luwrain.io.moodle.rest;
 
 import org.luwrain.io.moodle.helper.GsonExclude;
-import org.luwrain.io.moodle.model.MoodleDiscussion;
+import org.luwrain.io.moodle.model.MoodlePosts;
 
 import java.io.Reader;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.luwrain.core.*;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 
-public class MoodleRestDiscussion {
-	private final String DEBUG_TAG = "MoodleRestDiscussion";
+public class MoodleRestPost {
+	private final String DEBUG_TAG = "MoodleRestPost";
 	private String mUrl;
 	private String token;
 
-	public MoodleRestDiscussion(String mUrl, String token) {
+	public MoodleRestPost(String mUrl, String token) {
 		this.mUrl = mUrl;
 		this.token = token;
 	}
 
 	/**
-	 * Get all discussions for the list of forums.
+	 * Get all posts for a discussion.
 	 * 
-	 * @param forumids
-	 *            List of forumids
+	 * @param discussionid
 	 * 
-	 * @return ArrayList of MoodleDiscussion
+	 * @return MoodlePosts
 	 * 
 	 * @author Praveen Kumar Pendyala (praveen@praveenkumar.co.in)
 	 */
-	public ArrayList<MoodleDiscussion> getDiscussions(List<String> forumids) {
-		ArrayList<MoodleDiscussion> mDiscussions = null;
+	public MoodlePosts getPosts(int discussionid) {
+		MoodlePosts mPosts = null;
 		String format = MoodleRestOption.RESPONSE_FORMAT;
-		String function = MoodleRestOption.FUNCTION_GET_DISCUSSIONS;
+		String function = MoodleRestOption.FUNCTION_GET_POSTS;
 
 		try {
 			// Adding all parameters.
 			String params = "";
 
-			if (forumids == null)
-				forumids = new ArrayList<>();
-
-			for (int i = 0; i < forumids.size(); i++)
-				params += "&forumids[" + i + "]="
-						+ URLEncoder.encode(forumids.get(i), "UTF-8");
+			params += "&discussionid="
+					+ URLEncoder.encode(String.valueOf(discussionid), "UTF-8");
 
 			// Build a REST call url to make a call.
 			String restUrl = mUrl + "/webservice/rest/server.php" + "?wstoken="
@@ -62,15 +54,13 @@ public class MoodleRestDiscussion {
 			Gson gson = new GsonBuilder()
 					.addDeserializationExclusionStrategy(ex)
 					.addSerializationExclusionStrategy(ex).create();
-			mDiscussions = gson.fromJson(reader,
-					new TypeToken<List<MoodleDiscussion>>() {
-					}.getType());
+			mPosts = gson.fromJson(reader, MoodlePosts.class);
 		} catch (Exception e) {
 			Log.debug(DEBUG_TAG, "URL encoding failed");
 			e.printStackTrace();
 		}
 
-		return mDiscussions;
+		return mPosts;
 	}
 
 }

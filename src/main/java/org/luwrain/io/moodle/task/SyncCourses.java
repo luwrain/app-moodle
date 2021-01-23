@@ -5,7 +5,7 @@ import java.io.*;
 import java.util.*;
 
 import org.luwrain.io.moodle.model.*;
-import org.luwrain.io.moodle.moodlerest.*;
+import org.luwrain.io.moodle.rest.*;
 
 /**
  * @author Praveen Kumar Pendyala (praveen@praveenkumar.co.in)
