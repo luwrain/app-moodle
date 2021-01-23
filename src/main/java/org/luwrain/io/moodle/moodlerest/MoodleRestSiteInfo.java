@@ -10,53 +10,50 @@ import org.luwrain.core.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-public class MoodleRestSiteInfo {
-	private final String DEBUG_TAG = "MoodleRestCourses";
+public final class MoodleRestSiteInfo
+{
+    static private final String DEBUG_TAG = "MoodleRestCourses";
+    
 	private String mUrl;
 	private String token;
 	MoodleSiteInfo siteInfo = new MoodleSiteInfo();
 
-	public MoodleRestSiteInfo(String mUrl, String token) {
-		this.mUrl = mUrl;
-		this.token = token;
-	}
+	public MoodleRestSiteInfo(String mUrl, String token)
+    {
+	this.mUrl = mUrl;
+	this.token = token;
+    }
 
-	/**
-	 * Get the siteinfo for the current account
-	 * 
-	 * @return siteinfo object
-	 * 
-	 * @author Praveen Kumar Pendyala (praveen@praveenkumar.co.in)
-	 */
-	public MoodleSiteInfo getSiteInfo() {
-		String format = MoodleRestOption.RESPONSE_FORMAT;
+    /**
+     * Get the siteinfo for the current account
+     * 
+     * @return siteinfo object
+     * 
+     * @author Praveen Kumar Pendyala (praveen@praveenkumar.co.in)
+     */
+    public MoodleSiteInfo getSiteInfo()
+    {
+	String format = MoodleRestOption.RESPONSE_FORMAT;
 		String function = MoodleRestOption.FUNCTION_GET_SITE_INFO;
-
 		try {
 			// Adding all parameters.
 			String params = "" + URLEncoder.encode("", "UTF-8");
-
 			// Build a REST call url to make a call.
 			String restUrl = mUrl + "/webservice/rest/server.php" + "?wstoken="
 					+ token + "&wsfunction=" + function
 					+ "&moodlewsrestformat=" + format;
-
 			// Fetch content now
 			MoodleRestCall mrc = new MoodleRestCall();
-			Reader reader = mrc.fetchContent(restUrl, params);
+			try (Reader reader = mrc.fetchContent(restUrl, params)) {
 			Gson gson = new GsonBuilder().create();
 			siteInfo = gson.fromJson(reader, MoodleSiteInfo.class);
-			reader.close();
-
+			}
 		} catch (Exception e) {
 			Log.debug(DEBUG_TAG, "URL encoding failed");
 			e.printStackTrace();
 		}
-
 		if (siteInfo == null)
 			return new MoodleSiteInfo();
-
 		return siteInfo;
 	}
-
 }
