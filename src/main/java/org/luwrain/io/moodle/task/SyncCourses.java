@@ -1,5 +1,7 @@
 package org.luwrain.io.moodle.task;
 
+import java.io.*;
+
 import java.util.*;
 
 import org.luwrain.io.moodle.model.*;
@@ -27,7 +29,7 @@ public final class SyncCourses
      * 
      * @return syncStatus
      */
-    public Boolean syncAllCourses()
+    public Boolean syncAllCourses() throws IOException
     {
 	final MoodleRestCourse mrc = new MoodleRestCourse(mUrl, token);
 	final List<MoodleCourse> mCourses = mrc.getAllCourses();
