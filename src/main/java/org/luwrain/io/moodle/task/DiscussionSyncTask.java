@@ -1,9 +1,6 @@
 package org.luwrain.io.moodle.task;
 
-import org.luwrain.io.moodle.model.DB;
-import org.luwrain.io.moodle.model.MDroidNotification;
-import org.luwrain.io.moodle.model.MoodleCourse;
-import org.luwrain.io.moodle.model.MoodleDiscussion;
+import org.luwrain.io.moodle.model.*;
 import org.luwrain.io.moodle.moodlerest.MoodleRestDiscussion;
 
 import java.util.ArrayList;
@@ -115,10 +112,10 @@ public class DiscussionSyncTask {
 
 			// set notifications if enabled
 			else if (notification) {
-				List<MoodleCourse> dbCourses = DB.find(
-						MoodleCourse.class, "courseid = ? and siteid = ?",
+				List<Course> dbCourses = DB.find(
+						Course.class, "courseid = ? and siteid = ?",
 						String.valueOf(siteid), String.valueOf(topic.getCourseid()));
-				MoodleCourse course = (dbCourses != null && !dbCourses.isEmpty()) ? dbCourses
+				Course course = (dbCourses != null && !dbCourses.isEmpty()) ? dbCourses
 						.get(0) : null;
 
 				if (course != null) {
@@ -126,7 +123,7 @@ public class DiscussionSyncTask {
 							MDroidNotification.TYPE_FORUM_TOPIC,
 							"New forum topic in " + course.getShortname(),
 							topic.getName() + " started in course "
-									+ course.getFullname(), 1,
+									+ course.getFullName(), 1,
 							topic.getForumid()).save();
 					notificationcount++;
 				}

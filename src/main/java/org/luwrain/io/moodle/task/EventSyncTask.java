@@ -1,10 +1,6 @@
 package org.luwrain.io.moodle.task;
 
-import org.luwrain.io.moodle.model.DB;
-import org.luwrain.io.moodle.model.MDroidNotification;
-import org.luwrain.io.moodle.model.MoodleCourse;
-import org.luwrain.io.moodle.model.MoodleEvent;
-import org.luwrain.io.moodle.model.MoodleEvents;
+import org.luwrain.io.moodle.model.*;
 import org.luwrain.io.moodle.moodlerest.MoodleRestEvent;
 
 import java.util.ArrayList;
@@ -108,7 +104,7 @@ public class EventSyncTask {
 		ArrayList<MoodleEvent> events = mEvents.getEvents();
 		// Warnings are not being handled
 		List<MoodleEvent> dbEvents;
-		List<MoodleCourse> dbCourses;
+		List<Course> dbCourses;
 		MoodleEvent event = new MoodleEvent();
 
 		if (events != null)
@@ -119,7 +115,7 @@ public class EventSyncTask {
 				dbEvents = DB.find(MoodleEvent.class,
 						"eventid = ? and siteid = ?", String.valueOf(event.getEventid()),
 						String.valueOf(siteid));
-				dbCourses = DB.find(MoodleCourse.class,
+				dbCourses = DB.find(Course.class,
 						"courseid = ? and siteid = ?",
 						String.valueOf(event.getCourseid()), String.valueOf(siteid));
 				if (!dbCourses.isEmpty())

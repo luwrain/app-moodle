@@ -1,9 +1,6 @@
 package org.luwrain.io.moodle.task;
 
 import org.luwrain.io.moodle.model.*;
-import org.luwrain.io.moodle.model.MDroidNotification;
-import org.luwrain.io.moodle.model.MoodleCourse;
-import org.luwrain.io.moodle.model.MoodleForum;
 import org.luwrain.io.moodle.moodlerest.MoodleRestForum;
 
 import java.util.ArrayList;
@@ -103,7 +100,7 @@ public class ForumSyncTask {
 		}
 
 		List<MoodleForum> dbForums;
-		List<MoodleCourse> dbCourses;
+		List<Course> dbCourses;
 		MoodleForum forum = new MoodleForum();
 		for (int i = 0; i < mForums.size(); i++) {
 			forum = mForums.get(i);
@@ -114,7 +111,7 @@ public class ForumSyncTask {
 			dbForums = DB.find(MoodleForum.class,
 					"forumid = ? and siteid = ?", String.valueOf(forum.getForumid()),
 					String.valueOf(siteid));
-			dbCourses = DB.find(MoodleCourse.class,
+			dbCourses = DB.find(Course.class,
 					"courseid = ? and siteid = ?", String.valueOf(forum.getCourseid()),
 					String.valueOf(siteid));
 			if (!dbCourses.isEmpty())

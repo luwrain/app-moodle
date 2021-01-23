@@ -11,7 +11,7 @@ import com.google.gson.reflect.*;
 import org.luwrain.core.*;
 
 import org.luwrain.io.moodle.helper.GsonExclude;
-import org.luwrain.io.moodle.model.MoodleCourse;
+import org.luwrain.io.moodle.model.*;
 
 
 /**
@@ -38,7 +38,7 @@ public final class MoodleRestCourse
      * @return ArrayList of MoodleCourse
      * 
      */
-    public List<MoodleCourse> getAllCourses() throws IOException
+    public List<Course> getAllCourses() throws IOException
     {
 	final String format = MoodleRestOption.RESPONSE_FORMAT;
 	final String function = MoodleRestOption.FUNCTION_GET_ALL_COURSES;
@@ -56,7 +56,7 @@ public final class MoodleRestCourse
 	    .addDeserializationExclusionStrategy(ex)
 	    .addSerializationExclusionStrategy(ex).create();
 	    return gson.fromJson(reader,
-				 new TypeToken<List<MoodleCourse>>() {
+				 new TypeToken<List<Course>>() {
 				 }.getType());
 	}
     }
@@ -74,8 +74,8 @@ public final class MoodleRestCourse
 	 * 
 	 * @author Praveen Kumar Pendyala (praveen@praveenkumar.co.in)
 	 */
-	public ArrayList<MoodleCourse> getEnrolledCourses(String userId) {
-		ArrayList<MoodleCourse> mCourses = new ArrayList<>();
+	public ArrayList<Course> getEnrolledCourses(String userId) {
+		ArrayList<Course> mCourses = new ArrayList<>();
 		String format = MoodleRestOption.RESPONSE_FORMAT;
 		String function = MoodleRestOption.FUNCTION_GET_ENROLLED_COURSES;
 
@@ -97,7 +97,7 @@ public final class MoodleRestCourse
 					.addDeserializationExclusionStrategy(ex)
 					.addSerializationExclusionStrategy(ex).create();
 			mCourses = gson.fromJson(reader,
-					new TypeToken<List<MoodleCourse>>() {
+					new TypeToken<List<Course>>() {
 					}.getType());
 			reader.close();
 

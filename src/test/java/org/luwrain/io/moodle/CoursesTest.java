@@ -27,7 +27,7 @@ public class CoursesTest extends Assert
 	assertFalse(url.trim().isEmpty());
 	assertFalse(token.trim().isEmpty());
 	final MoodleRestCourse c = new MoodleRestCourse(url, token);
-	final List<MoodleCourse> res = c.getAllCourses();
+	final List<Course> res = c.getAllCourses();
 	assertNotNull(res);
 	assertFalse(res.isEmpty());
 }

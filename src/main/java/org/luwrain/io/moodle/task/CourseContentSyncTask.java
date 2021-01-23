@@ -1,11 +1,6 @@
 package org.luwrain.io.moodle.task;
 
-import org.luwrain.io.moodle.model.DB;
-import org.luwrain.io.moodle.model.MDroidNotification;
-import org.luwrain.io.moodle.model.MoodleCourse;
-import org.luwrain.io.moodle.model.MoodleModule;
-import org.luwrain.io.moodle.model.MoodleModuleContent;
-import org.luwrain.io.moodle.model.MoodleSection;
+import org.luwrain.io.moodle.model.*;
 import org.luwrain.io.moodle.moodlerest.MoodleRestCourseContent;
 
 import java.util.ArrayList;
@@ -16,7 +11,7 @@ public class CourseContentSyncTask {
 	String token;
 	long siteid;
 
-	MoodleCourse course;
+	Course course;
 	String error;
 	Boolean notification;
 	int notificationcount;
@@ -80,7 +75,7 @@ public class CourseContentSyncTask {
 	public Boolean syncCourseContents(int courseid) {
 
 		// Get the course from database for all future use
-		List<MoodleCourse> dbCourses = DB.find(MoodleCourse.class,
+		List<Course> dbCourses = DB.find(Course.class,
 				"siteid = ? and courseid = ?", String.valueOf(siteid), String.valueOf(courseid));
 		if (dbCourses == null || dbCourses.isEmpty()) {
 			error = "Course not found in database!";
@@ -170,7 +165,7 @@ public class CourseContentSyncTask {
 				new MDroidNotification(siteid,
 						MDroidNotification.TYPE_COURSE_CONTENT,
 						"New contents in " + course.getShortname(),
-						module.getName() + " added to " + course.getFullname(),
+						module.getName() + " added to " + course.getFullName(),
 						1, course.getCourseid()).save();
 				notificationcount++;
 			}

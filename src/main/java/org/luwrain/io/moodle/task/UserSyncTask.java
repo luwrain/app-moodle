@@ -1,9 +1,6 @@
 package org.luwrain.io.moodle.task;
 
-import org.luwrain.io.moodle.model.DB;
-import org.luwrain.io.moodle.model.MDroidNotification;
-import org.luwrain.io.moodle.model.MoodleCourse;
-import org.luwrain.io.moodle.model.MoodleUser;
+import org.luwrain.io.moodle.model.*;
 import org.luwrain.io.moodle.moodlerest.MoodleRestUser;
 
 import java.util.List;
@@ -94,10 +91,10 @@ public class UserSyncTask {
 				mUser.setId(dbUsers.get(0).getId());
 			// set notifications if enabled
 			else if (notification) {
-				List<MoodleCourse> dbCourses = DB.find(
-						MoodleCourse.class, "courseid = ? and siteid = ?",
+				List<Course> dbCourses = DB.find(
+						Course.class, "courseid = ? and siteid = ?",
 						String.valueOf(siteid), String.valueOf(courseid));
-				MoodleCourse course = (dbCourses != null && !dbCourses.isEmpty()) ? dbCourses
+				Course course = (dbCourses != null && !dbCourses.isEmpty()) ? dbCourses
 						.get(0) : null;
 
 				if (course != null) {
@@ -105,7 +102,7 @@ public class UserSyncTask {
 							MDroidNotification.TYPE_PARTICIPANT,
 							"New people joined " + course.getShortname(),
 							mUser.getFullname() + " joined "
-									+ course.getFullname(), 1, courseid).save();
+									+ course.getFullName(), 1, courseid).save();
 					notificationcount++;
 				}
 			}

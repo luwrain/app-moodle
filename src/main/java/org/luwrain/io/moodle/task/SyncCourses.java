@@ -32,7 +32,7 @@ public final class SyncCourses
     public Boolean syncAllCourses() throws IOException
     {
 	final MoodleRestCourse mrc = new MoodleRestCourse(mUrl, token);
-	final List<MoodleCourse> mCourses = mrc.getAllCourses();
+	final List<Course> mCourses = mrc.getAllCourses();
 	/** Error checking **/
 	// Some network or encoding issue.
 	if (mCourses.isEmpty())
@@ -47,15 +47,15 @@ public final class SyncCourses
 	    return false;
 	}
 	// Add siteid to all courses and update
-		List<MoodleCourse> dbCourses = null;
+		List<Course> dbCourses = null;
 		for (int i = 0; i < mCourses.size(); i++)
 		{
-			final MoodleCourse course = mCourses.get(i);
-			course.setSiteid(siteid);
+			final Course course = mCourses.get(i);
+			course.setAccount(siteid);
 			// Update or save in database
-			dbCourses = DB.find(MoodleCourse.class,
+			dbCourses = DB.find(Course.class,
 					"courseid = ? and siteid = ?", course.getCourseid() + "",
-					course.getSiteid() + "");
+					course.getAccount() + "");
 			if (dbCourses != null && !dbCourses.isEmpty())
 			{
 				// Set app specific fields explicitly
@@ -83,7 +83,7 @@ public final class SyncCourses
 			return false;
 		int userid = site.getUserid();
 		MoodleRestCourse mrc = new MoodleRestCourse(mUrl, token);
-		ArrayList<MoodleCourse> mCourses = mrc.getEnrolledCourses(String.valueOf(userid));
+		ArrayList<Course> mCourses = mrc.getEnrolledCourses(String.valueOf(userid));
 		/** Error checking **/
 		// Some network or encoding issue.
 		if (mCourses == null)
@@ -95,17 +95,17 @@ public final class SyncCourses
 		if (mCourses.size() == 1 && mCourses.get(0).getCourseid() == 0)
 			return false;
 		// Add siteid and isUserCourse to all courses and update
-		MoodleCourse course = new MoodleCourse();
-		List<MoodleCourse> dbCourses;
+		Course course = new Course();
+		List<Course> dbCourses;
 		for (int i = 0; i < mCourses.size(); i++)
 		{
 			course = mCourses.get(i);
-			course.setSiteid(siteid);
+			course.setAccount(siteid);
 			course.setIsUserCourse(true);
 			// Update or save in database
-			dbCourses = DB.find(MoodleCourse.class,
+			dbCourses = DB.find(Course.class,
 					"courseid = ? and siteid = ?", course.getCourseid() + "",
-					course.getSiteid() + "");
+					course.getAccount() + "");
 			if (!dbCourses.isEmpty()) {
 				// Set app specific fields explicitly
 				course.setId(dbCourses.get(0).getId());
