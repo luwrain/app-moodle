@@ -9,106 +9,106 @@ import lombok.*;
 @NoArgsConstructor
 public class Course
 {
+    private long id;
 
-    long id;
 	@SerializedName("id")
-	int courseid;
+	private int courseId;
 
 	@SerializedName("shortname")
-	String shortname;
+	private String shortname;
 
 	@SerializedName("categoryid")
-	int categoryId;
+	private int categoryId;
 
 	@SerializedName("categorysortorder")
-	int categorySortOrder;
+	private int categorySortOrder;
 
 	@SerializedName("fullname")
-	String fullName;
+	private String fullName;
 
 	@SerializedName("idnumber")
-	String idNumber;
+	private String idNumber;
 
 	@SerializedName("summary")
-	String summary;
+	private String summary;
 
 	@SerializedName("summaryformat")
-	int summaryFormat;
+	private int summaryFormat;
 
 	@SerializedName("format")
-	String format;
+	private String format;
 
 	@SerializedName("showgrades")
-	int showGrades;
+	private int showGrades;
 
 	@SerializedName("newsitems")
-	int newsItems;
+	private int newsItems;
 
 	@SerializedName("startdate")
-	int startDate;
+	private int startDate;
 
 	@SerializedName("numsections")
-	int numSections;
+	private int numSections;
 
 	@SerializedName("maxbytes")
-	int maxBytes;
+	private int maxBytes;
 
 	@SerializedName("showreports")
-	int showReports;
+	private int showReports;
 
 	@SerializedName("visible")
-	int visible;
+	private int visible;
 
 	@SerializedName("hiddensections")
-	int hiddenSections;
+	private int hiddenSections;
 
 	@SerializedName("groupmode")
-	int groupMode;
+private int groupMode;
 
 	@SerializedName("groupmodeforce")
-	int groupModeForce;
+	private int groupModeForce;
 
 	@SerializedName("defaultgroupingid")
-	int defaultGroupingId;
+	private int defaultGroupingId;
 
 	@SerializedName("timecreated")
-	int timeCreated;
+	private int timeCreated;
 
 	@SerializedName("timemodified")
-	int timeModified;
+	private int timeModified;
 
 	@SerializedName("enablecompletion")
-	int enableCompletion;
+	private int enableCompletion;
 
 	@SerializedName("completionnotify")
-	int completionNotify;
+	private int completionNotify;
 
 	@SerializedName("lang")
-	String lang;
+	private String lang;
 
 	@SerializedName("forcetheme")
-	String forceTheme;
+	private String forceTheme;
 
 	//@Ignore
 	@SerializedName("courseformatoptions")
-	List<MoodleCourseFormatOption> courseFormatOptions;
+	private List<MoodleCourseFormatOption> courseFormatOptions;
 
 	// Errors. Not to be stored in sql db.
 	//@Ignore
 	@SerializedName("exception")
-	String exception;
+	private String exception;
 
 	//@Ignore
 	@SerializedName("errorcode")
-	String errorCode;
+	private String errorCode;
 
 	//@Ignore
 	@SerializedName("message")
-	String message;
+	private String message;
 
 	//@Ignore
 	@SerializedName("debuginfo")
-	String debugInfo;
+	private String debugInfo;
 
 	// Relational fields
 	long account;

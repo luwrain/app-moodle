@@ -41,7 +41,7 @@ public final class SyncCourses
 	    return false;
 	}
 	// Moodle exception
-	if (mCourses.size() == 1 && mCourses.get(0).getCourseid() == 0)
+	if (mCourses.size() == 1 && mCourses.get(0).getCourseId() == 0)
 	{
 	    error = "Moodle Exception: User don't have permissions!";
 	    return false;
@@ -54,7 +54,7 @@ public final class SyncCourses
 			course.setAccount(siteid);
 			// Update or save in database
 			dbCourses = DB.find(Course.class,
-					"courseid = ? and siteid = ?", course.getCourseid() + "",
+					"courseid = ? and siteid = ?", course.getCourseId() + "",
 					course.getAccount() + "");
 			if (dbCourses != null && !dbCourses.isEmpty())
 			{
@@ -92,7 +92,7 @@ public final class SyncCourses
 		if (mCourses.isEmpty())
 			return false;
 		// Moodle exception
-		if (mCourses.size() == 1 && mCourses.get(0).getCourseid() == 0)
+		if (mCourses.size() == 1 && mCourses.get(0).getCourseId() == 0)
 			return false;
 		// Add siteid and isUserCourse to all courses and update
 		Course course = new Course();
@@ -104,7 +104,7 @@ public final class SyncCourses
 			course.setIsUserCourse(true);
 			// Update or save in database
 			dbCourses = DB.find(Course.class,
-					"courseid = ? and siteid = ?", course.getCourseid() + "",
+					"courseid = ? and siteid = ?", course.getCourseId() + "",
 					course.getAccount() + "");
 			if (!dbCourses.isEmpty()) {
 				// Set app specific fields explicitly

@@ -147,7 +147,7 @@ public class CourseContentSyncTask {
 		for (int i = 0; i < modules.size(); i++) {
 			module = modules.get(i);
 			module.setSiteid(siteid);
-			module.setCourseid(course.getCourseid());
+			module.setCourseid(course.getCourseId());
 			module.setParentid(sectiondbid);
 			module.setSectionid(sectionid);
 
@@ -166,7 +166,7 @@ public class CourseContentSyncTask {
 						MDroidNotification.TYPE_COURSE_CONTENT,
 						"New contents in " + course.getShortname(),
 						module.getName() + " added to " + course.getFullName(),
-						1, course.getCourseid()).save();
+						1, course.getCourseId()).save();
 				notificationcount++;
 			}
 			module.save();
@@ -204,7 +204,7 @@ public class CourseContentSyncTask {
 		for (int i = 0; i < contents.size(); i++) {
 			content = contents.get(i);
 			content.setSiteid(siteid);
-			content.setCourseid(course.getCourseid());
+			content.setCourseid(course.getCourseId());
 			content.setParentid(moduledbid);
 			content.setSectionid(sectionid);
 			content.setModuleid(moduleid);
