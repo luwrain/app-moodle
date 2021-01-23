@@ -4,10 +4,8 @@ import java.util.*;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.*;
-//import com.orm.SugarRecord;
-//import com.orm.dsl.Ignore;
 
-public class MoodleCourse //extends SugarRecord<MoodleCourse>
+public class MoodleCourse
 {
 	// since id is a reserved field in SugarRecord
 	@SerializedName("id")

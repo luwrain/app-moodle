@@ -1,9 +1,8 @@
 package org.luwrain.io.moodle.model;
 
 import com.google.gson.annotations.SerializedName;
-//import com.orm.SugarRecord;
 
-public class MoodleModuleContent //extends SugarRecord<MoodleModuleContent>
+public final class MoodleModuleContent
 {
 
 	@SerializedName("type")

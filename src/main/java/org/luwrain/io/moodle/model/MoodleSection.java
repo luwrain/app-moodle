@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
-//import com.orm.SugarRecord;
-//import com.orm.dsl.Ignore;
 
-public class MoodleSection //extends SugarRecord<MoodleSection>
+public final class MoodleSection
 {
 	/**
 	 * A section can be a week of contents or whatever the admin sets it.

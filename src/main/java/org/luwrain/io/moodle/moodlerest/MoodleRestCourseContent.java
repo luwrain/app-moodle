@@ -14,10 +14,12 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
-public class MoodleRestCourseContent {
+public class MoodleRestCourseContent
+{
 	private final String DEBUG_TAG = "MoodleRestCourseContents";
-	private String mUrl;
-	private String token;
+    
+	private final String mUrl;
+	private final String token;
 
 	public MoodleRestCourseContent(String mUrl, String token) {
 		this.mUrl = mUrl;
@@ -34,7 +36,8 @@ public class MoodleRestCourseContent {
 	 * 
 	 * @author Praveen Kumar Pendyala (praveen@praveenkumar.co.in)
 	 */
-	public ArrayList<MoodleSection> getCourseContent(String courseid) {
+	public ArrayList<MoodleSection> getCourseContent(String courseid)
+    {
 		ArrayList<MoodleSection> sections = null;
 		String format = MoodleRestOption.RESPONSE_FORMAT;
 		String function = MoodleRestOption.FUNCTION_GET_COURSE_CONTENTS;
