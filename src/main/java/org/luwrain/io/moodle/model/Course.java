@@ -37,6 +37,9 @@ public class Course
 	@SerializedName("categoryid")
 	private int categoryId;
 
+    	/**
+	 * sort order in the category
+	 */
 	@SerializedName("categorysortorder")
 	private int categorySortOrder;
 
@@ -49,36 +52,65 @@ public class Course
 	@SerializedName("summary")
 	private String summary;
 
+    	/**
+	 * The summary format (1 = HTML, 0 = MOODLE, 2 = PLAIN or 4 = MARKDOWN)
+	 */
 	@SerializedName("summaryformat")
 	private int summaryFormat;
 
+    	/**
+	 * The course format: weeks, topics, social, site,..
+	 */
 	@SerializedName("format")
 	private String format;
-
+    
+	/**
+	 * 1 if grades are shown, otherwise 0
+	 */
 	@SerializedName("showgrades")
 	private int showGrades;
 
-	@SerializedName("newsitems")
-	private int newsItems;
-
+    	/**
+	 * number of recent items appearing on the course page
+	 */
+	 */
 	@SerializedName("startdate")
 	private int startDate;
 
+    	/**
+	 * (deprecated, use courseformatoptions) number of weeks/topics
+	 */
 	@SerializedName("numsections")
 	private int numSections;
 
+    	/**
+	 * largest size of file that can be uploaded into the course
+	 */
 	@SerializedName("maxbytes")
 	private int maxBytes;
 
+    	/**
+	 * are Show activity report (yes = 1, no =0)
+	 */
 	@SerializedName("showreports")
 	private int showReports;
 
+    	/**
+	 * 1: available to student, 0:not available
+	 */
 	@SerializedName("visible")
 	private int visible;
 
+    	/**
+	 * (deprecated, use courseformatoptions) How the hidden sections in the
+	 * course are displayed to students
+	 */
 	@SerializedName("hiddensections")
 	private int hiddenSections;
-
+    
+	/**
+	 * no group, separate, visible
+	 */
 	@SerializedName("groupmode")
 private int groupMode;
 
@@ -87,50 +119,87 @@ private int groupMode;
 
 	@SerializedName("defaultgroupingid")
 	private int defaultGroupingId;
-
+    
+	/**
+	 * timestamp when the course have been created
+	 */
 	@SerializedName("timecreated")
 	private int timeCreated;
 
+    	/**
+	 * Timestamp when the course have been modified
+	 */
 	@SerializedName("timemodified")
 	private int timeModified;
 
+    	/**
+	 * Enabled, control via completion and activity settings. Disbaled, not
+	 * shown in activity settings.
+	 */
 	@SerializedName("enablecompletion")
 	private int enableCompletion;
 
+    	/**
+	 * 1: yes 0: no
+	 */
 	@SerializedName("completionnotify")
 	private int completionNotify;
+    
+	/**
+	 * forced course language
+	 */
+	public String getLang() {
 
 	@SerializedName("lang")
 	private String lang;
-
+	
+	/**
+	 * name of the force theme
+	 */
 	@SerializedName("forcetheme")
 	private String forceTheme;
 
-	//@Ignore
+		/**
+	 * additional options for particular course format
+	 */
 	@SerializedName("courseformatoptions")
 	private List<MoodleCourseFormatOption> courseFormatOptions;
 
-	// Errors. Not to be stored in sql db.
-	//@Ignore
+		/**
+	 * Exception occurred while retrieving
+	 */
 	@SerializedName("exception")
 	private String exception;
-
-	//@Ignore
+	
+	/**
+	 * Errorcode of error occurred while retrieving
+	 */
 	@SerializedName("errorcode")
 	private String errorCode;
-
-	//@Ignore
+	
+	/**
+	 * Message of error occurred while retrieving
+	 */
 	@SerializedName("message")
 	private String message;
 
-	//@Ignore
+		/**
+	 * Debug info on the error occurred
+	 */
 	@SerializedName("debuginfo")
 	private String debugInfo;
 
-	// Relational fields
-	long account;
-	Boolean isUserCourse = false;
-	Boolean isFavCourse = false;
+	private long account;
+
+		/**
+	 * Get if this course is enrolled by current user
+	 */
+	private Boolean isUserCourse = false;
+
+		/**
+	 * Get favourite status course in the app
+	 */
+	private Boolean isFavCourse = false;
 
 	public Course(long account)
     {
