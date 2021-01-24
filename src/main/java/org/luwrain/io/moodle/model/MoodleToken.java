@@ -17,7 +17,8 @@
 
 package org.luwrain.io.moodle.model;
 
-public class MoodleToken {
+public class MoodleToken
+{
 	String token;
 
 	String error = "";

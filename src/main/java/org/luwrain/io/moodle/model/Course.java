@@ -28,187 +28,182 @@ public class Course
 {
     private long id;
 
-	@SerializedName("id")
-	private int courseId;
+    @SerializedName("id")
+    private int courseId;
 
-	@SerializedName("shortname")
-	private String shortname;
+    @SerializedName("shortname")
+    private String shortname;
 
-	@SerializedName("categoryid")
-	private int categoryId;
+    @SerializedName("categoryid")
+    private int categoryId;
 
-    	/**
-	 * sort order in the category
-	 */
-	@SerializedName("categorysortorder")
-	private int categorySortOrder;
+    /**
+     * sort order in the category
+     */
+    @SerializedName("categorysortorder")
+    private int categorySortOrder;
 
-	@SerializedName("fullname")
-	private String fullName;
+    @SerializedName("fullname")
+    private String fullName;
 
-	@SerializedName("idnumber")
-	private String idNumber;
+    @SerializedName("idnumber")
+    private String idNumber;
 
-	@SerializedName("summary")
-	private String summary;
+    @SerializedName("summary")
+    private String summary;
 
-    	/**
-	 * The summary format (1 = HTML, 0 = MOODLE, 2 = PLAIN or 4 = MARKDOWN)
-	 */
-	@SerializedName("summaryformat")
-	private int summaryFormat;
+    /**
+     * The summary format (1 = HTML, 0 = MOODLE, 2 = PLAIN or 4 = MARKDOWN)
+     */
+    @SerializedName("summaryformat")
+    private int summaryFormat;
 
-    	/**
-	 * The course format: weeks, topics, social, site,..
-	 */
-	@SerializedName("format")
-	private String format;
-    
-	/**
-	 * 1 if grades are shown, otherwise 0
-	 */
-	@SerializedName("showgrades")
-	private int showGrades;
+    /**
+     * The course format: weeks, topics, social, site,..
+     */
+    @SerializedName("format")
+    private String format;
 
-    	/**
-	 * number of recent items appearing on the course page
-	 */
-	 */
+    /**
+     * 1 if grades are shown, otherwise 0
+     */
+    @SerializedName("showgrades")
+    private int showGrades;
+
+    /**
+     * number of recent items appearing on the course page
+     */
 	@SerializedName("startdate")
 	private int startDate;
 
-    	/**
-	 * (deprecated, use courseformatoptions) number of weeks/topics
-	 */
-	@SerializedName("numsections")
-	private int numSections;
+    /**
+     * (deprecated, use courseformatoptions) number of weeks/topics
+     */
+    @SerializedName("numsections")
+    private int numSections;
 
-    	/**
-	 * largest size of file that can be uploaded into the course
-	 */
-	@SerializedName("maxbytes")
-	private int maxBytes;
+    /**
+     * largest size of file that can be uploaded into the course
+     */
+    @SerializedName("maxbytes")
+    private int maxBytes;
 
-    	/**
-	 * are Show activity report (yes = 1, no =0)
-	 */
-	@SerializedName("showreports")
-	private int showReports;
+    /**
+     * are Show activity report (yes = 1, no =0)
+     */
+    @SerializedName("showreports")
+    private int showReports;
 
-    	/**
-	 * 1: available to student, 0:not available
-	 */
-	@SerializedName("visible")
-	private int visible;
+    /**
+     * 1: available to student, 0:not available
+     */
+    @SerializedName("visible")
+    private int visible;
 
-    	/**
-	 * (deprecated, use courseformatoptions) How the hidden sections in the
-	 * course are displayed to students
-	 */
-	@SerializedName("hiddensections")
-	private int hiddenSections;
-    
-	/**
-	 * no group, separate, visible
-	 */
-	@SerializedName("groupmode")
-private int groupMode;
+    /**
+     * (deprecated, use courseformatoptions) How the hidden sections in the
+     * course are displayed to students
+     */
+    @SerializedName("hiddensections")
+    private int hiddenSections;
 
-	@SerializedName("groupmodeforce")
-	private int groupModeForce;
+    /**
+     * no group, separate, visible
+     */
+    @SerializedName("groupmode")
+    private int groupMode;
 
-	@SerializedName("defaultgroupingid")
-	private int defaultGroupingId;
-    
-	/**
-	 * timestamp when the course have been created
-	 */
-	@SerializedName("timecreated")
-	private int timeCreated;
+    @SerializedName("groupmodeforce")
+    private int groupModeForce;
 
-    	/**
-	 * Timestamp when the course have been modified
-	 */
-	@SerializedName("timemodified")
-	private int timeModified;
+    @SerializedName("defaultgroupingid")
+    private int defaultGroupingId;
 
-    	/**
-	 * Enabled, control via completion and activity settings. Disbaled, not
-	 * shown in activity settings.
-	 */
-	@SerializedName("enablecompletion")
-	private int enableCompletion;
+    /**
+     * timestamp when the course have been created
+     */
+    @SerializedName("timecreated")
+    private int timeCreated;
 
-    	/**
-	 * 1: yes 0: no
-	 */
-	@SerializedName("completionnotify")
-	private int completionNotify;
-    
-	/**
-	 * forced course language
-	 */
-	public String getLang() {
+    /**
+     * Timestamp when the course have been modified
+     */
+    @SerializedName("timemodified")
+    private int timeModified;
 
+    /**
+     * Enabled, control via completion and activity settings. Disbaled, not
+     * shown in activity settings.
+     */
+    @SerializedName("enablecompletion")
+    private int enableCompletion;
+
+    /**
+     * 1: yes 0: no
+     */
+    @SerializedName("completionnotify")
+    private int completionNotify;
+
+    /**
+     * forced course language
+     */
 	@SerializedName("lang")
-	private String lang;
-	
+	    private String lang;
+
 	/**
 	 * name of the force theme
 	 */
 	@SerializedName("forcetheme")
-	private String forceTheme;
+	    private String forceTheme;
 
-		/**
+	/**
 	 * additional options for particular course format
 	 */
 	@SerializedName("courseformatoptions")
-	private List<MoodleCourseFormatOption> courseFormatOptions;
+	    private List<MoodleCourseFormatOption> courseFormatOptions;
 
-		/**
+	/**
 	 * Exception occurred while retrieving
 	 */
 	@SerializedName("exception")
-	private String exception;
-	
+	    private String exception;
+
 	/**
 	 * Errorcode of error occurred while retrieving
 	 */
 	@SerializedName("errorcode")
-	private String errorCode;
-	
+	    private String errorCode;
+
 	/**
 	 * Message of error occurred while retrieving
 	 */
 	@SerializedName("message")
-	private String message;
+	    private String message;
 
-		/**
+	/**
 	 * Debug info on the error occurred
 	 */
 	@SerializedName("debuginfo")
-	private String debugInfo;
+	    private String debugInfo;
 
 	private long account;
 
-		/**
+	/**
 	 * Get if this course is enrolled by current user
 	 */
 	private Boolean isUserCourse = false;
 
-		/**
+	/**
 	 * Get favourite status course in the app
 	 */
 	private Boolean isFavCourse = false;
 
 	public Course(long account)
-    {
-	this.account = account;
+	{
+	    this.account = account;
 	}
 
-
-    public void  save()
-    {
-    }
-
+	public void  save()
+	{
+	}
 }

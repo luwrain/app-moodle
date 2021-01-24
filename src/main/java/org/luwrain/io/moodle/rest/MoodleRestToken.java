@@ -19,31 +19,32 @@ package org.luwrain.io.moodle.rest;
 
 import org.luwrain.io.moodle.model.MoodleToken;
 
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.Reader;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
+import java.io.*;
+import java.net.*;
+
+import com.google.gson.*;
 
 import org.luwrain.core.*;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
-public class MoodleRestToken {
-	private final String DEBUG_TAG = "MoodleToken";
-	private String uname;
-	private String pswd;
-	private String url;
+/**
+ * 	 * @author Praveen Kumar Pendyala (praveen@praveenkumar.co.in)
+ */
+public final class MoodleRestToken
+{
+	static private final String LOG_COMPONENT = "MoodleToken";
+
+	private final String uname;
+	private final String pswd;
+	private final String url;
 	private MoodleToken token = new MoodleToken();
 
-	public MoodleRestToken(String uname, String pswd, String baseUrl) {
-		this.uname = uname;
-		this.pswd = pswd;
-		this.url = baseUrl + "/login/token.php";
-	}
+    public MoodleRestToken(String uname, String pswd, String baseUrl)
+    {
+	this.uname = uname;
+	this.pswd = pswd;
+	this.url = baseUrl + "/login/token.php";
+    }
 
 	/**
 	 * Tries 3 different web service and returns a token for the given username
@@ -53,11 +54,9 @@ public class MoodleRestToken {
 	 * object
 	 * 
 	 * @return MoodleToken object
-	 * 
-	 * @author Praveen Kumar Pendyala (praveen@praveenkumar.co.in)
-	 * 
 	 */
-	public MoodleToken getToken() {
+	public MoodleToken getToken()
+    {
 		String urlParams = "";
 
 		// set required parameters for token url
@@ -65,7 +64,7 @@ public class MoodleRestToken {
 			urlParams = "username=" + URLEncoder.encode(uname, "UTF-8")
 					+ "&password=" + URLEncoder.encode(pswd, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
-			Log.debug(DEBUG_TAG, "credential encoding failed!");
+			Log.debug(LOG_COMPONENT, "credential encoding failed!");
 			e.printStackTrace();
 		}
 
@@ -86,7 +85,8 @@ public class MoodleRestToken {
 			if (token.getToken() == null)
 				getTokenForService(urlParams,
 						MoodleRestOption.SERVICE_MOODLE_MOBILE);
-		} else {
+		} else
+		{
 			token = new MoodleToken();
 			token.appenedError("Token fetch failed!");
 		}
@@ -94,9 +94,9 @@ public class MoodleRestToken {
 		return token;
 	}
 
-	private void getTokenForService(String urlParams, String serviceName) {
-
-		HttpURLConnection con;
+	private void getTokenForService(String urlParams, String serviceName)
+    {
+		final HttpURLConnection con;
 		try {
 			con = (HttpURLConnection) new URL(url + "?" + urlParams
 					+ "&service=" + serviceName).openConnection();
@@ -117,7 +117,9 @@ public class MoodleRestToken {
 			token = gson.fromJson(reader, MoodleToken.class);
 			reader.close();
 
-		} catch (Exception e) {
+		}
+		catch (IOException e)
+		{
 			token.appenedError("\n" + serviceName + " : " + e.getMessage());
 		}
 
@@ -128,10 +130,9 @@ public class MoodleRestToken {
 	 * 
 	 * @param serviceName
 	 * @return token object
-	 * 
-	 * @author Praveen Kumar Pendyala (praveen@praveenkumar.co.in)
 	 */
-	public MoodleToken getCustomServiceToken(String serviceName) {
+	public MoodleToken getCustomServiceToken(String serviceName)
+    {
 		String urlParams = "";
 
 		// set required parameters for token url
@@ -139,7 +140,7 @@ public class MoodleRestToken {
 			urlParams = "username=" + URLEncoder.encode(uname, "UTF-8")
 					+ "&password=" + URLEncoder.encode(pswd, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
-			Log.debug(DEBUG_TAG, "credential encoding failed!");
+			Log.debug(LOG_COMPONENT, "credential encoding failed!");
 			e.printStackTrace();
 		}
 
