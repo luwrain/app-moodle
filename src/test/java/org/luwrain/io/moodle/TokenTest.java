@@ -12,13 +12,14 @@ import org.luwrain.io.moodle.rest.*;
 
 public class TokenTest extends Base
 {
-    @Test public void getToken() throws IOException
+    @Ignore @Test public void getToken() throws IOException
     {
 	loadProps();
 	assertTrue(isReadyPasswd());
-	final MoodleRestToken restToken = new MoodleRestToken(this.url, this.user, this.passwd);
-	final MoodleToken token = restToken.getToken();
-	assertNotNull(token);
+	final RestToken restToken = new RestToken(this.url, this.user, this.passwd);
+	final Token token = restToken.getToken(RestToken.MOBILE);
+		assertNotNull(token);
+		assertEquals("", token.getErrorInfo());
 	System.out.println("proba " + token.getToken());
     }
 }
